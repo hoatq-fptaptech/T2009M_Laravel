@@ -53,6 +53,12 @@
                         <p>Categories</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url("/products") }}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-info"></i>
+                        <p>Products</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     public function all(){
-        $categories = DB::table("categories")->get(); // tra ve 1 list object
+        $categories = DB::table("categories")->get(); // tra ve 1 list object StdClass -> data object
         return view("category.list",[
             "categories"=>$categories
         ]);
