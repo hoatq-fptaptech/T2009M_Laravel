@@ -18,4 +18,10 @@ class Product extends Model
         "qty",
         "category_id",
     ];
+
+    public function Category(){
+//        return $this->belongsTo(Category::class,"category_id","id");
+        return $this->belongsTo(Category::class);// phai khoa ngoai la category_id va khoa chinh ben category la id
+        // return $this->belongsTo(Model::class,"model_id","id") -> return $this->belongsTo(Model::class)
+    }
 }

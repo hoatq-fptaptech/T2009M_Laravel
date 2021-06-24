@@ -42,7 +42,8 @@
                                 <td>{{$item->description}}</td>
                                 <td>{{$item->price}}</td>
                                 <td>{{$item->qty}}</td>
-                                <td>{{$item->category_id}}</td>
+{{--                                <td>{{$item->category_name}} (Su dung Join table)</td>--}}
+                                <td>{{$item->Category->name}}</td>
                                 <td>{{$item->created_at}}</td>
                                 <td>{{$item->updated_at}}</td>
                                 <td>

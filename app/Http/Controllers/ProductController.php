@@ -5,12 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use PHPUnit\Exception;
 
 class ProductController extends Controller
 {
     public function all(){
-        $products = Product::all();
+        // raw sql
+//        $sql = "select * from products";
+//        $products = DB::raw($sql);
+
+        // use model
+//        $products = Product::all(); // liet ke tat ca
+        // join table
+//        $products = Product::leftJoin("categories","categories.id","=","products.category_id")
+//            ->select("products.*","categories.name as category_name")->get();
+
+        // su dung relationship
+        $products = Product::with("Category")->get();
+
+      //  dd($products);// print data de kiem tra
         return view("product.list",[
             "products"=>$products
         ]);

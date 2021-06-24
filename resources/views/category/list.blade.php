@@ -24,6 +24,7 @@
                        <thead>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Products count</th>
                         <th>Created at</th>
                         <th>Updated at</th>
                        </thead>
@@ -32,6 +33,7 @@
                             <tr>
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
+                                <td>{{$item->products_count}}</td>
                                 <td>{{$item->created_at}}</td>
                                 <td>{{$item->updated_at}}</td>
                             </tr>

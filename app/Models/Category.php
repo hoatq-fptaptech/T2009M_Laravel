@@ -16,4 +16,7 @@ class Category extends Model
     ];
 //    public $timestamps = true;// mặc định là true  -> tự động cập nhật thời gian vào 2 cột created_at và updated_at
 
+    public function Products(){
+        return $this->hasMany(Product::class);// tra ve 1 collection cac Product object
+    }
 }
