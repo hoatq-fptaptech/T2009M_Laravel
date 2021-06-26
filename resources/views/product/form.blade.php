@@ -21,7 +21,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-6">
-                    <form action="{{url("/products/save")}}" method="post">
+                    <form action="{{url("/products/save")}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Name</label>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label class="text-capitalize">Image</label>
-                            <input type="text" name="image"  value="{{old("image")}}" class="form-control"/>
+                            <input type="file" name="image"  value="{{old("image")}}" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <label class="text-capitalize">price</label>
