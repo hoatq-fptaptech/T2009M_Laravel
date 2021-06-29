@@ -21,7 +21,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-6">
-                    <form action="{{url("/products/save")}}" method="post" enctype="multipart/form-data">
+                    <form action="{{url("admin/products/save")}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Name</label>

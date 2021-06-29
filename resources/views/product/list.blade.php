@@ -8,7 +8,7 @@
                     <h1 class="m-0">Products</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-5">
-                    <form action="{{url("products")}}" method="get">
+                    <form action="{{url("admin/products")}}" method="get">
                         <input type="text" name="search" class="form-control-sm" placeholder="search"/>
                         <select name="category_id" class="form-control-sm">
                             <option value="0">Select category</option>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-sm-3">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{url("products/new")}}">New product</a></li>
+                        <li class="breadcrumb-item"><a href="{{url("admin/products/new")}}">New product</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -60,8 +60,8 @@
                                 <td>{{$item->created_at}}</td>
                                 <td>{{$item->updated_at}}</td>
                                 <td>
-                                    <a href="{{url("products/edit",["id"=>$item->id])}}" class="btn btn-outline-primary">Edit</a>
-                                    <a onclick="return confirm('Chắc chắn xóa sản phẩm {{$item->name}} ?')" href="{{url("products/delete",["id"=>$item->id])}}" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{url("admin/products/edit",["id"=>$item->id])}}" class="btn btn-outline-primary">Edit</a>
+                                    <a onclick="return confirm('Chắc chắn xóa sản phẩm {{$item->name}} ?')" href="{{url("admin/products/delete",["id"=>$item->id])}}" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

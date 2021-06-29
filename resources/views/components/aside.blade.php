@@ -13,7 +13,7 @@
                 <img src="{{asset("dist/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -36,25 +36,25 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-header">LABELS</li>
                 <li class="nav-item">
-                    <a href="{{ url("/") }}" class="nav-link">
+                    <a href="{{ url("admin/") }}" class="nav-link">
                         <i class="nav-icon far fa-circle text-danger"></i>
                         <p class="text">Home</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url("/about-us") }}" class="nav-link">
+                    <a href="{{ url("admin/about-us") }}" class="nav-link">
                         <i class="nav-icon far fa-circle text-warning"></i>
                         <p>About us</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url("/categories") }}" class="nav-link">
+                    <a href="{{ url("admin/categories") }}" class="nav-link">
                         <i class="nav-icon far fa-circle text-info"></i>
                         <p>Categories</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url("/products") }}" class="nav-link">
+                    <a href="{{ url("admin/products") }}" class="nav-link">
                         <i class="nav-icon far fa-circle text-info"></i>
                         <p>Products</p>
                     </a>

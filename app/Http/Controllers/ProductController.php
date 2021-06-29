@@ -50,6 +50,9 @@ class ProductController extends Controller
     }
 
     public function form(){
+        // Auth::user() -> trả về 1 User Object - chính là user đang login
+        // Auth::id() -> trả về id của user đang logn
+        // Auth::check() -> trả về true/false  - trạng thái đăng nhập hay chưa
         $categories = Category::all();
         return view("product.form",[
             "categories"=>$categories

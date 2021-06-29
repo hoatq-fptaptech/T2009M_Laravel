@@ -21,7 +21,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-6">
-                    <form action="{{url("/categories/save")}}" method="post">
+                    <form action="{{url("admin/categories/save")}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label>Name</label>

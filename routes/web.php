@@ -14,17 +14,8 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [WebController::class,"home"]);
-Route::get('/about-us', [WebController::class,"aboutUs"]);
-
-Route::get("/categories",[CategoryController::class,"all"]);
-Route::get("/categories/new",[CategoryController::class,"form"]);
-Route::post("/categories/save",[CategoryController::class,"save"]);
-
-Route::get("/products",[ProductController::class,"all"]);
-Route::get("/products/new",[ProductController::class,"form"]);
-Route::post("/products/save",[ProductController::class,"save"]);
-Route::get("/products/edit/{id}",[ProductController::class,"edit"]);
-Route::post("/products/update/{id}",[ProductController::class,"update"]);
-Route::get("/products/delete/{id}",[ProductController::class,"delete"]);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+//Route::get("/",)
+Route::get("/cart",[WebController::class,"cart"]);
