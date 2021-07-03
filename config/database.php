@@ -65,12 +65,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => "postgres://zzrctvtmsdiqip:ae063f31233e161002b844b0cca11fb57968535b99c9d8d089c4ff5595c94aea@ec2-3-89-0-52.compute-1.amazonaws.com:5432/d4cs8vvrm7nbm
-",//env('DATABASE_URL'),
+            'url' => "postgres://zzrctvtmsdiqip:ae063f31233e161002b844b0cca11fb57968535b99c9d8d089c4ff5595c94aea@ec2-3-89-0-52.compute-1.amazonaws.com:5432/d4cs8vvrm7nbm",//env('DATABASE_URL'),
             'host' => "ec2-3-89-0-52.compute-1.amazonaws.com",//env('DB_HOST', '127.0.0.1'),
             'port' => "5432",//env('DB_PORT', '5432'),
             'database' => "d4cs8vvrm7nbm",//env('DB_DATABASE', 'forge'),
-            'username' =>"zzrctvtmsdiqip",// env('DB_USERNAME', 'forge'),
+            'username' => "zzrctvtmsdiqip",// env('DB_USERNAME', 'forge'),
             'password' =>"ae063f31233e161002b844b0cca11fb57968535b99c9d8d089c4ff5595c94aea",// env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
