@@ -57,8 +57,8 @@
                                 <td>{{$item->qty}}</td>
 {{--                                <td>{{$item->category_name}} (Su dung Join table)</td>--}}
                                 <td>{{$item->Category->name}}</td>
-                                <td>{{$item->created_at}}</td>
-                                <td>{{$item->updated_at}}</td>
+                                <td>{{formatDate($item->created_at)}}</td>
+                                <td>{{formatDate($item->updated_at)}}</td>
                                 <td>
                                     <a href="{{url("admin/products/edit",["id"=>$item->id])}}" class="btn btn-outline-primary">Edit</a>
                                     <a onclick="return confirm('Chắc chắn xóa sản phẩm {{$item->name}} ?')" href="{{url("admin/products/delete",["id"=>$item->id])}}" class="btn btn-outline-danger">Delete</a>

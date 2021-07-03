@@ -34,8 +34,8 @@
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->products_count}}</td>
-                                <td>{{$item->created_at}}</td>
-                                <td>{{$item->updated_at}}</td>
+                                <td>{{formatDate($item->created_at)}}</td>
+                                <td>{{formatDate($item->updated_at)}}</td>
                             </tr>
                         @endforeach
                        </tbody>
