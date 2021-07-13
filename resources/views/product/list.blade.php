@@ -62,6 +62,7 @@
                                 <td>
                                     <a href="{{url("admin/products/edit",["id"=>$item->id])}}" class="btn btn-outline-primary">Edit</a>
                                     <a onclick="return confirm('Chắc chắn xóa sản phẩm {{$item->name}} ?')" href="{{url("admin/products/delete",["id"=>$item->id])}}" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{url("/add-to-cart",["id"=>$item->id])}}" class="btn btn-outline-info">Add to cart</a>
                                 </td>
                             </tr>
                         @endforeach

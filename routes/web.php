@@ -18,4 +18,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 //Route::get("/",)
+Route::get("/add-to-cart/{id}",[WebController::class,"addToCart"]);
 Route::get("/cart",[WebController::class,"cart"]);
