@@ -25,7 +25,7 @@
                         <th>Cart Qty</th>
                         </thead>
                         <tbody>
-                        @foreach($cart as $item)
+                        @forelse($cart as $item)
                             <tr>
                                 <td>{{$loop->index +1}}</td>
                                 <td>{{$item->name}}</td>
@@ -33,8 +33,17 @@
                                 <td>{{$item->price}}</td>
                                 <td>{{$item->cart_qty}}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="5">Không có san phẩm nào</td>
+                            </tr>
+                        @endforelse
                         </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="5"><a href="{{url("checkout")}}" class="btn btn-outline-danger">Checkout</a> </td>
+                        </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

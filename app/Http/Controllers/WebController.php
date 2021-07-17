@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use PHPUnit\Exception;
 
 class WebController extends Controller
 {
@@ -53,7 +56,65 @@ class WebController extends Controller
     }
 
     public function cart(){
-        $cart = Session::get("cart");
+        $cart = [];
+        if(Session::has("cart"))
+            $cart = Session::get("cart");
         return view("cart.cart",["cart"=>$cart]);
+    }
+
+    public function checkout(){
+        if(!Session::has("cart")){
+            return redirect()->to("/cart");// chuyen huong ve trang gio hang khi ko co san pham
+        }
+        $cart = Session::get("cart");
+        $grandTotal = 0;
+        foreach ($cart as $item){
+            $grandTotal += $item->cart_qty * $item->price;
+        }
+        return  view("cart.checkout",["cart"=>$cart,"grandTotal"=>$grandTotal]);
+    }
+
+    public function createOrder(Request $request){
+        if(!Session::has("cart")){
+            return redirect()->to("/cart");// chuyen huong ve trang gio hang khi ko co san pham
+        }
+        $cart = Session::get("cart");
+        $request->validate([
+           "customer_name"=>"required",
+           "customer_tel"=>"required",
+           "customer_address"=>"required",
+        ]);
+        try {
+            // tao don hang
+            $grandTotal = 0;
+            foreach ($cart as $item){
+                $grandTotal += $item->cart_qty * $item->price;
+            }
+            $order = Order::create([
+                "customer_name"=>$request->get("customer_name"),
+                "customer_tel"=>$request->get("customer_tel"),
+                "customer_address"=>$request->get("customer_address"),
+                "city"=>$request->get("city"),
+                "shipping_fee"=>0,
+                "grand_total"=>$grandTotal,
+            ]);
+            foreach ($cart as $item){
+                DB::table("orders_items")->insert([
+                   "order_id"=>$order->id,
+                   "product_id"=>$item->id,
+                   "qty"=>$item->cart_qty,
+                   "price"=>$item->price,
+                ]);
+                // con 1 viec nua - giam so luong san pham
+                Product::where("id",$item->id)->decrement("qty",$item->cart_qty);
+            }
+            // con phai lam 1 viec nua - xoa gio hang
+            Session::forget("cart");// Session::put("cart",null);
+
+
+        }catch (Exception $exception){
+            return redirect()->back();
+        }
+        return redirect()->to("orderSuccess");
     }
 }
