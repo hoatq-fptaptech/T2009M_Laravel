@@ -23,6 +23,7 @@
                         <th>Image</th>
                         <th>Price</th>
                         <th>Cart Qty</th>
+                        <th>Total</th>
                         </thead>
                         <tbody>
                         @forelse($cart as $item)
@@ -31,7 +32,13 @@
                                 <td>{{$item->name}}</td>
                                 <td><img height="50px" width="50px" src="{{$item->getImage()}}" /> </td>
                                 <td>{{$item->price}}</td>
-                                <td>{{$item->cart_qty}}</td>
+                                <td>
+                                    <form action="{{url("update-qty",["id"=>$item->id])}}" method="get">
+                                        <input type="text" name="cart_qty" value="{{$item->cart_qty}}"/>
+                                        <button class="btn btn-outline-primary" type="submit">Update</button>
+                                    </form>
+                                </td>
+                                <td>{{$item->cart_qty * $item->price}}</td>
                             </tr>
                         @empty
                             <tr>

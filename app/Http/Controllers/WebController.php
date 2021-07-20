@@ -117,4 +117,42 @@ class WebController extends Controller
         }
         return redirect()->to("orderSuccess");
     }
+
+    public function updateQty($id,Request $request){
+        if(Session::has("cart")){
+            $cart = Session::get("cart");
+            for($i=0;$i<count($cart);$i++){
+                if($cart[$i]->id == $id){
+                    $cart[$i]->cart_qty = $request->get("cart_qty"); // cap nhat so luong sp trong gio hang
+                    if($cart[$i]->cart_qty == 0){
+                        unset($cart[$i]);// xoa sp trong gio hang neu sl = 0
+                    }
+                    break;
+                }
+            }
+            Session::put("cart",$cart);
+        }
+        return redirect()->back();
+    }
+
+    // xoa 1 sp trong gio hang
+    public function removeItem($id){
+        if(Session::has("cart")){
+            $cart = Session::get("cart");
+            for($i=0;$i<count($cart);$i++){
+                if($cart[$i]->id == $id){
+                    unset($cart[$i]);// xoa sp trong gio hang neu sl = 0
+                    break;
+                }
+            }
+            Session::put("cart",$cart);
+        }
+        return redirect()->back();
+    }
+
+    // xoa toan bo gio hang
+    public function clearCart(){
+        Session::forget("cart");
+        return redirect()->back();
+    }
 }

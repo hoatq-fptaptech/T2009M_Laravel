@@ -22,3 +22,4 @@ Route::get("/add-to-cart/{id}",[WebController::class,"addToCart"]);
 Route::get("/cart",[WebController::class,"cart"]);
 Route::get("/checkout",[WebController::class,"checkout"]);
 Route::post("/create-order",[WebController::class,"createOrder"]);
+Route::get("/update-qty/{id}",[WebController::class,"updateQty"]);
