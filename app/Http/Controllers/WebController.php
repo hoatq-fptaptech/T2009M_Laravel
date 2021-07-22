@@ -155,4 +155,10 @@ class WebController extends Controller
         Session::forget("cart");
         return redirect()->back();
     }
+
+    // api noi bo
+    public function allProduct(){
+        $products = Product::limit(10)->get();
+        return response()->json($products);
+    }
 }
